@@ -32,13 +32,20 @@ function draw() {
     rocket.draw();
 }
 
-//Runs every tick
-function tick(elapsedTime) {
 
-    player.tick();
-    rocket.tick();
+let prevTime = 0;
+//Runs every tick
+function tick(currentTime) {
+
+    elapsedTime = (currentTime-prevTime)/1000;
+    // console.log(currentTime);
+    // console.log(prevTime);
+    // console.log(elapsedTime);
+    player.tick(elapsedTime);
+    rocket.tick(elapsedTime);
 
     draw();
+    prevTime = currentTime;
     window.requestAnimationFrame(tick);
 }
 
@@ -62,15 +69,15 @@ window.addEventListener("keydown",(e)=>{
     switch(key) {
         case 'a':
         case 'ArrowLeft':
-            player.vx=-0.1;
+            player.moveLeft();
         break;
         case 'd':
         case 'ArrowRight':
-            player.vx=.1;
+            player.moveRight();
         break;
         case 'w':
         case 'ArrowUp':
-            player.vy = -0.6;
+            player.jump();
         break;
 
     }
@@ -78,11 +85,22 @@ window.addEventListener("keydown",(e)=>{
 });
 
 window.addEventListener("click",(e)=>{
-    if(e.clientX > window.innerWidth/2) {
-        player.vx=.1;
+    let mouseX,mouseY;
+    mouseX = e.clientX - canvas.getBoundingClientRect().x;
+    mouseY = e.clientY - canvas.getBoundingClientRect().y;
+    if(mouseY > ctx.canvas.height *.8) {
+    if(mouseX < ctx.canvas.width/3) {
+        player.moveLeft();
+    }
+    else if(mouseX > ctx.canvas.width*.66){
+        player.moveRight();
     }
     else {
-        player.vx=-0.1;
+        player.jump();
+    }
+    }
+    else {
+        player.shootBullet(e.clientX, e.clientY);
     }
 });
 

@@ -1,6 +1,6 @@
 class Rocket extends PhysicsObject{
     constructor(x,y) {
-        super(x,y,3,5,0,0.2,false);
+        super(x,y,1.5,4,0,0,false);
   
     }
 
