@@ -8,6 +8,7 @@ var cellSize;
 
 let player = new Player(1,1);
 let rockets = new Rockets();
+let bullets = new Bullets();
 
 let gameRunning = false;
 
@@ -15,9 +16,6 @@ let gameRunning = false;
 function init(){
 canvas = document.getElementById("canvas");
 ctx = canvas.getContext("2d");    
-
-rockets.add(new Rocket(3,5, 1, 1));
-rockets.add(new Rocket(3,5, -1, 1));
 
 resizeCanvas();
 window.requestAnimationFrame(tick)
@@ -35,6 +33,7 @@ function draw() {
     }
     player.draw();
     rockets.draw();
+    bullets.draw();
 }
 
 
@@ -48,6 +47,12 @@ function tick(currentTime) {
     // console.log(elapsedTime);
     player.tick(elapsedTime);
     rockets.tick(elapsedTime);
+    bullets.tick(elapsedTime)
+
+    //Spawn rockets
+    if(rockets.rockets.length<2) {
+        generateRocket();
+    }
 
     draw();
     prevTime = currentTime;
@@ -65,6 +70,14 @@ function resizeCanvas() {
     ctx.canvas.height=window.innerWidth;
     }
     cellSize = ctx.canvas.width/20;
+}
+
+function generateRocket() {
+    let x=Math.random()*19;
+    let vy = Math.random()*5+3;
+    let vx = Math.random()*8-4;
+    let y=-3 - Math.random()*10;
+    rockets.add(new Rocket(x,y,vx,vy));
 }
 
 //keypresses
@@ -106,7 +119,7 @@ window.addEventListener("click",(e)=>{
     }
     }
     else {
-        player.shootBullet(e.clientX, e.clientY);
+        player.shootBullet(mouseX, mouseY);
     }
 });
 

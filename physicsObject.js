@@ -9,18 +9,21 @@ class PhysicsObject {
         this.hasGravity = gravity;
     }
 
+    handleCollisions(){}
+
     tick(elapsedTime) {
         this.x+=this.vx*elapsedTime;
         this.y+=this.vy*elapsedTime;
         if(this.hasGravity) {
               //Gravity
         if(this.y+this.h < 17)
-        this.vy += .5;
+        this.vy += 30*elapsedTime;
         else {
             this.y = 17 - this.h;
             this.vy = 0;
         }
         }
+        this.handleCollisions();
     }
 }
 
