@@ -1,9 +1,10 @@
 class Animation {
     constructor(x,y) {
-        this.x=x;
-        this.y = y;
         this.w=2;
         this.h=2;
+        this.x=x-this.w/2;
+        this.y = y-this.h/2;
+   
         this.time = 5;
         this.alive = true;
     }

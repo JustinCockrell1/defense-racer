@@ -11,14 +11,14 @@ class Rocket extends PhysicsObject{
                 bullets.items[i].y < this.y+this.h && bullets.items[i].y+bullets.items[i].h > this.y) {
                    bullets.items[i].canBePickedUp=true;
                    this.alive=false; 
-                   animations.add(new Animation(this.x,this.y));
+                   animations.add(new Animation(bullets.items[i].x+bullets.items[i].w/2,bullets.items[i].y+bullets.items[i].h/2));
                 }
         }
 
         if(this.y+this.h > 17) {
             this.alive=false;
             //hit the ground - explode
-            animations.add(new Animation(this.x,this.y));
+            animations.add(new Animation(this.x+this.w/2,this.y+this.h));
       
         }
         if(this.x<0) {
