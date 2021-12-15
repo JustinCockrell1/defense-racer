@@ -12,6 +12,9 @@ class Animation {
         ctx.fillRect(this.x*cellSize,this.y*cellSize, this.w*cellSize,this.h*cellSize);
     }
     tick(elapsedTime) {
-        this.time-=this.elapsedTime;
+        this.time-=elapsedTime;
+        if(this.time<=0) {
+            this.alive=false;
+        }
     }
 }

@@ -6,17 +6,19 @@ class Rocket extends PhysicsObject{
 
     handleCollisions() {
 
-        for(let i = 0; i < bullets.bullets.length; i++) {
-            if(bullets.bullets[i].x < this.x+this.w && bullets.bullets[i].x+bullets.bullets[i].w > this.x &&
-                bullets.bullets[i].y < this.y+this.h && bullets.bullets[i].y+bullets.bullets[i].h > this.y) {
-                   bullets.bullets[i].canBePickedUp=true;
+        for(let i = 0; i < bullets.items.length; i++) {
+            if(bullets.items[i].x < this.x+this.w && bullets.items[i].x+bullets.items[i].w > this.x &&
+                bullets.items[i].y < this.y+this.h && bullets.items[i].y+bullets.items[i].h > this.y) {
+                   bullets.items[i].canBePickedUp=true;
                    this.alive=false; 
+                   animations.add(new Animation(this.x,this.y));
                 }
         }
 
         if(this.y+this.h > 17) {
             this.alive=false;
             //hit the ground - explode
+            animations.add(new Animation(this.x,this.y));
       
         }
         if(this.x<0) {
@@ -35,27 +37,3 @@ class Rocket extends PhysicsObject{
     }
 }
 
-
-class Rockets {
-    constructor() {
-        this.rockets = [];
-    }
-
-    tick(elapsedTime) {
-        this.rockets.forEach((rocket,i)=>{
-            if(rocket.alive)
-            rocket.tick(elapsedTime);
-            else
-            this.rockets.splice(i,1);
-        })
-    }
-    draw() {
-        this.rockets.forEach((rocket)=>{
-            if(rocket.alive)
-            rocket.draw();
-        })
-    }
-    add(rocket) {
-        this.rockets.push(rocket);
-    }
-}

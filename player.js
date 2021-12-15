@@ -23,11 +23,11 @@ class Player extends PhysicsObject{
     handleCollisions() {
        
         //check if hit bullets
-        for(let i = 0; i < bullets.bullets.length; i++) {
-            if(bullets.bullets[i].x < this.x+this.w && bullets.bullets[i].x+bullets.bullets[i].w > this.x &&
-                bullets.bullets[i].y < this.y+this.h && bullets.bullets[i].y+bullets.bullets[i].h > this.y) {
-                   if(bullets.bullets[i].canBePickedUp) {
-                    bullets.bullets[i].alive=false;
+        for(let i = 0; i < bullets.items.length; i++) {
+            if(bullets.items[i].x < this.x+this.w && bullets.items[i].x+bullets.items[i].w > this.x &&
+                bullets.items[i].y < this.y+this.h && bullets.items[i].y+bullets.items[i].h > this.y) {
+                   if(bullets.items[i].canBePickedUp) {
+                    bullets.items[i].alive=false;
                     this.numBullets++;
                    }
                     

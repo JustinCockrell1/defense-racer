@@ -7,8 +7,9 @@ tileImg.src="assets/tile.png";
 var cellSize;
 
 let player = new Player(1,1);
-let rockets = new Rockets();
-let bullets = new Bullets();
+let rockets = new Manager();
+let bullets = new Manager();
+let animations = new Manager();
 
 let gameRunning = false;
 
@@ -34,6 +35,7 @@ function draw() {
     player.draw();
     rockets.draw();
     bullets.draw();
+    animations.draw();
 }
 
 
@@ -48,9 +50,10 @@ function tick(currentTime) {
     player.tick(elapsedTime);
     rockets.tick(elapsedTime);
     bullets.tick(elapsedTime)
+    animations.tick(elapsedTime);
 
     //Spawn rockets
-    if(rockets.rockets.length<2) {
+    if(rockets.items.length<2) {
         generateRocket();
     }
 

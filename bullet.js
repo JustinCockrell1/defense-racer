@@ -26,27 +26,5 @@ class Bullet extends PhysicsObject {
     }
 }
 
-class Bullets {
-    constructor() {
-        this.bullets = [];
-    }
-
-    tick(elapsedTime) {
-        this.bullets.forEach((bullet,i)=>{
-            if(bullet.alive)
-            bullet.tick(elapsedTime);
-            else 
-            this.bullets.splice(i,1);
-        })
-    }
-    draw() {
-        this.bullets.forEach((bullet)=>{
-            bullet.draw();
-        })
-    }
-    add(bullet) {
-        this.bullets.push(bullet);
-    }
-}
 
 
