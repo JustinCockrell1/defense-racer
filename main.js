@@ -6,13 +6,18 @@ tileImg.src="assets/tile.png";
 
 var cellSize;
 
-var player = new Player(1,1);
-var rocket = new Rocket(3, 3);
+let player = new Player(1,1);
+let rockets = new Rockets();
+
+let gameRunning = false;
 
 //Run once when the page is loaded
 function init(){
 canvas = document.getElementById("canvas");
 ctx = canvas.getContext("2d");    
+
+rockets.add(new Rocket(3,5, 1, 1));
+rockets.add(new Rocket(3,5, -1, 1));
 
 resizeCanvas();
 window.requestAnimationFrame(tick)
@@ -29,7 +34,7 @@ function draw() {
     }
     }
     player.draw();
-    rocket.draw();
+    rockets.draw();
 }
 
 
@@ -42,7 +47,7 @@ function tick(currentTime) {
     // console.log(prevTime);
     // console.log(elapsedTime);
     player.tick(elapsedTime);
-    rocket.tick(elapsedTime);
+    rockets.tick(elapsedTime);
 
     draw();
     prevTime = currentTime;
@@ -64,6 +69,7 @@ function resizeCanvas() {
 
 //keypresses
 window.addEventListener("keydown",(e)=>{
+
     let key = e.key;
     console.log(key);
     switch(key) {

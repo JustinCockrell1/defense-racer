@@ -1,6 +1,6 @@
 class Rocket extends PhysicsObject{
-    constructor(x,y) {
-        super(x,y,1.5,4,0,0,false);
+    constructor(x,y, vx, vy) {
+        super(x,y,1.5,4,vx,vy,false);
   
     }
 
@@ -13,4 +13,22 @@ class Rocket extends PhysicsObject{
 }
 
 
+class Rockets {
+    constructor() {
+        this.rockets = [];
+    }
 
+    tick(elapsedTime) {
+        this.rockets.forEach((rocket)=>{
+            rocket.tick(elapsedTime);
+        })
+    }
+    draw() {
+        this.rockets.forEach((rocket)=>{
+            rocket.draw();
+        })
+    }
+    add(rocket) {
+        this.rockets.push(rocket);
+    }
+}
