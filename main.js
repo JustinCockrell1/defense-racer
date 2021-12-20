@@ -2,7 +2,7 @@ var ctx;
 var canvas;
 
 var tileImg = new Image();
-tileImg.src="assets/tile.png";
+tileImg.src="assets/images/tile.png";
 
 var cellSize;
 
