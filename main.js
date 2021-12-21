@@ -3,6 +3,8 @@ var canvas;
 
 var tileImg = new Image();
 tileImg.src="assets/images/tile.png";
+var carImg = new Image();
+carImg.src="assets/images/Justin'sGame_Left Five.png"
 
 var cellSize;
 
@@ -82,6 +84,12 @@ function generateRocket() {
     let y=-3 - Math.random()*10;
     rockets.add(new Rocket(x,y,vx,vy));
 }
+
+//declaring empty event listeners
+window.addEventListener('touchstart', () => {});
+window.addEventListener('touchend', () => {});
+window.addEventListener('touchcancel', () => {});
+window.addEventListener('touchmove', () => {});
 
 //keypresses
 window.addEventListener("keydown",(e)=>{

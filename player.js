@@ -8,6 +8,7 @@ class Player extends PhysicsObject{
     draw() {
         ctx.fillStyle="blue";
         ctx.fillRect(this.x*cellSize,this.y*cellSize, this.w*cellSize, this.h*cellSize);
+        ctx.drawImage(carImg,this.x*cellSize,this.y*cellSize, this.w*cellSize, this.h*cellSize);
     }
 
     moveLeft() {
