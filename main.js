@@ -1,10 +1,17 @@
 var ctx;
 var canvas;
 
-var tileImg = new Image();
-tileImg.src="assets/images/tile.png";
-var carImg = new Image();
-carImg.src="assets/images/Justin'sGame_Left Five.png"
+
+var graphics = new Graphics();
+graphics.add("car","assets/images/Justin'sGame_Left Five.png");
+graphics.add("carleft","assets/images/Justin'sGame_Right Five.png");
+graphics.add("tile","assets/images/tile.png");
+graphics.add("background","assets/images/Justin'sGame_Background.png");
+graphics.add("rocket","assets/images/Justin'sGame_Rocket Blue.png");
+graphics.add("bullet","assets/images/Justin'sGame_Flyer.png");
+graphics.add("explosion1","assets/images/Justin'sGame_Explosion 1.png");
+graphics.add("explosion2","assets/images/Justin'sGame_Explosion 2.png");
+graphics.add("explosion3","assets/images/Justin'sGame_Explosion 3.png");
 
 var cellSize;
 
@@ -26,15 +33,16 @@ window.requestAnimationFrame(tick)
 
 //Draw everything
 function draw() {
-    ctx.fillStyle="white";
-    ctx.fillRect(0,0,ctx.canvas.width,ctx.canvas.height);
-    ctx.strokeRect(0,0,ctx.canvas.width,ctx.canvas.height);
-    for(let i = 0; i < 20; i++) {
-    for(let j = 0; j < 3; j++) {
-    ctx.drawImage(tileImg, i*cellSize, (17+j)*cellSize, cellSize, cellSize);
-    }
-    }
-    player.draw();
+    ctx.drawImage(graphics.get("background"), 0,0,ctx.canvas.width,ctx.canvas.height);
+    // ctx.fillStyle="white";
+    // ctx.fillRect(0,0,ctx.canvas.width,ctx.canvas.height);
+    // ctx.strokeRect(0,0,ctx.canvas.width,ctx.canvas.height);
+    // for(let i = 0; i < 20; i++) {
+    // for(let j = 0; j < 3; j++) {
+    // ctx.drawImage(tileImg, i*cellSize, (17+j)*cellSize, cellSize, cellSize);
+    // }
+    // }
+       player.draw();
     rockets.draw();
     bullets.draw();
     animations.draw();

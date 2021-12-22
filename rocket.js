@@ -32,8 +32,19 @@ class Rocket extends PhysicsObject{
     }
 
     draw() {
-        ctx.fillStyle="green";
-        ctx.fillRect(this.x*cellSize, this.y*cellSize, this.w*cellSize,this.h*cellSize);
+        //ctx.fillStyle="green";
+        //ctx.fillRect(this.x*cellSize, this.y*cellSize, this.w*cellSize,this.h*cellSize);
+
+        let angle = Math.atan2(this.vy,this.vx);
+
+        let x = this.x*cellSize+(this.w*cellSize)/2;
+        let y = this.y*cellSize+(this.h*cellSize)/2;
+        ctx.translate(x,y);
+        ctx.rotate(((angle*180) / Math.PI)-90);
+        ctx.translate(-x,-y);
+
+        ctx.drawImage(graphics.get("rocket"), this.x*cellSize, this.y*cellSize, this.w*cellSize,this.h*cellSize);
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
     }
 }
 

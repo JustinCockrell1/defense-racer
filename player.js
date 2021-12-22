@@ -6,9 +6,13 @@ class Player extends PhysicsObject{
     }
 
     draw() {
-        ctx.fillStyle="blue";
-        ctx.fillRect(this.x*cellSize,this.y*cellSize, this.w*cellSize, this.h*cellSize);
-        ctx.drawImage(carImg,this.x*cellSize,this.y*cellSize, this.w*cellSize, this.h*cellSize);
+        //ctx.fillStyle="blue";
+        //ctx.fillRect(this.x*cellSize,this.y*cellSize, this.w*cellSize, this.h*cellSize);
+        if(this.vx>= 0)
+        ctx.drawImage(graphics.get("car"),(this.x-.1)*cellSize,(this.y-0.4)*cellSize, (this.w+0.4)*cellSize, (this.h+1)*cellSize);
+        else {
+            ctx.drawImage(graphics.get("carleft"),(this.x-.1)*cellSize,(this.y-0.4)*cellSize, (this.w+0.4)*cellSize, (this.h+1)*cellSize);
+        }
     }
 
     moveLeft() {

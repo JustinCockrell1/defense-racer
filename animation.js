@@ -9,8 +9,8 @@ class Animation {
         this.alive = true;
     }
     draw() {
-        ctx.fillStyle="black";
-        ctx.fillRect(this.x*cellSize,this.y*cellSize, this.w*cellSize,this.h*cellSize);
+
+        ctx.drawImage(graphics.get("explosion1"),this.x*cellSize,this.y*cellSize, this.w*cellSize,this.h*cellSize)
     }
     tick(elapsedTime) {
         this.time-=elapsedTime;
