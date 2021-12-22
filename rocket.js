@@ -36,13 +36,12 @@ class Rocket extends PhysicsObject{
         //ctx.fillRect(this.x*cellSize, this.y*cellSize, this.w*cellSize,this.h*cellSize);
 
         let angle = Math.atan2(this.vy,this.vx);
-        let degrees = 180 *angle/Math.PI;
-        degrees = (360+Math.round(degrees))%360+90;
+
 
         let x = this.x*cellSize+(this.w*cellSize)/2;
         let y = this.y*cellSize+(this.h*cellSize)/2;
         ctx.translate(x,y);
-        ctx.rotate(degrees/180*Math.PI);
+        ctx.rotate(angle+1.5708);
         ctx.translate(-x,-y);
 
         ctx.drawImage(graphics.get("rocket"), this.x*cellSize, this.y*cellSize, this.w*cellSize,this.h*cellSize);
