@@ -51,6 +51,7 @@ class Player extends PhysicsObject{
     }
 
     shootBullet(x,y) {
+        console.log("shooting");
         if(this.numBullets>0) {
         x/=cellSize;
         y/=cellSize;

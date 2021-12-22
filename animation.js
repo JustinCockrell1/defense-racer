@@ -10,7 +10,7 @@ class Animation {
     }
     draw() {
 
-        ctx.drawImage(graphics.get("explosion1"),this.x*cellSize,this.y*cellSize, this.w*cellSize,this.h*cellSize)
+        ctx.drawImage(graphics.get("explosion2"),this.x*cellSize,this.y*cellSize, this.w*cellSize,this.h*cellSize)
     }
     tick(elapsedTime) {
         this.time-=elapsedTime;
